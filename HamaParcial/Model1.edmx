@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Prg3ParcModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityType Name="mEstatusPaciente">
+          <Key>
+            <PropertyRef Name="IDESTATUS" />
+          </Key>
+          <Property Name="IDESTATUS" Type="int" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="mPacientes">
+          <Key>
+            <PropertyRef Name="IDPACIENTE" />
+          </Key>
+          <Property Name="IDPACIENTE" Type="int" Nullable="false" />
+          <Property Name="NOMBRES" Type="nvarchar" MaxLength="50" />
+          <Property Name="APELLIDOS" Type="nvarchar" MaxLength="50" />
+          <Property Name="EXPEDIENTE" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="IDENTIFICACION" Type="nvarchar" MaxLength="11" />
+          <Property Name="ESTATUS" Type="int" />
+        </EntityType>
+        <Association Name="FK__mPaciente__ESTAT__267ABA7A">
+          <End Role="mEstatusPaciente" Type="Self.mEstatusPaciente" Multiplicity="0..1" />
+          <End Role="mPacientes" Type="Self.mPacientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mEstatusPaciente">
+              <PropertyRef Name="IDESTATUS" />
+            </Principal>
+            <Dependent Role="mPacientes">
+              <PropertyRef Name="ESTATUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Prg3ParcModelStoreContainer">
+          <EntitySet Name="mEstatusPaciente" EntityType="Self.mEstatusPaciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mPacientes" EntityType="Self.mPacientes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__mPaciente__ESTAT__267ABA7A" Association="Self.FK__mPaciente__ESTAT__267ABA7A">
+            <End Role="mEstatusPaciente" EntitySet="mEstatusPaciente" />
+            <End Role="mPacientes" EntitySet="mPacientes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Prg3ParcModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityType Name="mEstatusPaciente">
+          <Key>
+            <PropertyRef Name="IDESTATUS" />
+          </Key>
+          <Property Name="IDESTATUS" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="mPacientes" Relationship="Self.FK__mPaciente__ESTAT__267ABA7A" FromRole="mEstatusPaciente" ToRole="mPacientes" />
+        </EntityType>
+        <EntityType Name="mPaciente">
+          <Key>
+            <PropertyRef Name="IDPACIENTE" />
+          </Key>
+          <Property Name="IDPACIENTE" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRES" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="APELLIDOS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EXPEDIENTE" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IDENTIFICACION" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="mEstatusPaciente" Relationship="Self.FK__mPaciente__ESTAT__267ABA7A" FromRole="mPacientes" ToRole="mEstatusPaciente" />
+        </EntityType>
+        <Association Name="FK__mPaciente__ESTAT__267ABA7A">
+          <End Role="mEstatusPaciente" Type="Self.mEstatusPaciente" Multiplicity="0..1" />
+          <End Role="mPacientes" Type="Self.mPaciente" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="DBhamaPrg">
+          <EntitySet Name="mEstatusPacientes" EntityType="Self.mEstatusPaciente" />
+          <EntitySet Name="mPacientes" EntityType="Self.mPaciente" />
+          <AssociationSet Name="FK__mPaciente__ESTAT__267ABA7A" Association="Self.FK__mPaciente__ESTAT__267ABA7A">
+            <End Role="mEstatusPaciente" EntitySet="mEstatusPacientes" />
+            <End Role="mPacientes" EntitySet="mPacientes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="Prg3ParcModelStoreContainer" CdmEntityContainer="DBhamaPrg">
+          <EntitySetMapping Name="mEstatusPacientes">
+            <EntityTypeMapping TypeName="Prg3ParcModel.mEstatusPaciente">
+              <MappingFragment StoreEntitySet="mEstatusPaciente">
+                <ScalarProperty Name="IDESTATUS" ColumnName="IDESTATUS" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mPacientes">
+            <EntityTypeMapping TypeName="Prg3ParcModel.mPaciente">
+              <MappingFragment StoreEntitySet="mPacientes">
+                <ScalarProperty Name="IDPACIENTE" ColumnName="IDPACIENTE" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+                <ScalarProperty Name="EXPEDIENTE" ColumnName="EXPEDIENTE" />
+                <ScalarProperty Name="IDENTIFICACION" ColumnName="IDENTIFICACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK__mPaciente__ESTAT__267ABA7A" TypeName="Prg3ParcModel.FK__mPaciente__ESTAT__267ABA7A" StoreEntitySet="mPacientes">
+            <EndProperty Name="mEstatusPaciente">
+              <ScalarProperty Name="IDESTATUS" ColumnName="ESTATUS" />
+            </EndProperty>
+            <EndProperty Name="mPacientes">
+              <ScalarProperty Name="IDPACIENTE" ColumnName="IDPACIENTE" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="ESTATUS" />
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

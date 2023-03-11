@@ -1,0 +1,7 @@
+C:\Users\marbe\OneDrive\Documentos\HamaParcial\bin\Debug\HamaParcial.exe.config
+C:\Users\marbe\OneDrive\Documentos\HamaParcial\bin\Debug\HamaParcial.exe
+C:\Users\marbe\OneDrive\Documentos\HamaParcial\bin\Debug\HamaParcial.pdb
+C:\Users\marbe\OneDrive\Documentos\HamaParcial\obj\Debug\HamaParcial.csproj.AssemblyReference.cache
+C:\Users\marbe\OneDrive\Documentos\HamaParcial\obj\Debug\HamaParcial.csproj.CoreCompileInputs.cache
+C:\Users\marbe\OneDrive\Documentos\HamaParcial\obj\Debug\HamaParcial.exe
+C:\Users\marbe\OneDrive\Documentos\HamaParcial\obj\Debug\HamaParcial.pdb

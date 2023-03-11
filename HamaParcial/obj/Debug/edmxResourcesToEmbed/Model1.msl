@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+  <EntityContainerMapping StorageEntityContainer="Prg3ParcModelStoreContainer" CdmEntityContainer="DBhamaPrg">
+    <EntitySetMapping Name="mEstatusPacientes">
+      <EntityTypeMapping TypeName="Prg3ParcModel.mEstatusPaciente">
+        <MappingFragment StoreEntitySet="mEstatusPaciente">
+          <ScalarProperty Name="IDESTATUS" ColumnName="IDESTATUS" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mPacientes">
+      <EntityTypeMapping TypeName="Prg3ParcModel.mPaciente">
+        <MappingFragment StoreEntitySet="mPacientes">
+          <ScalarProperty Name="IDPACIENTE" ColumnName="IDPACIENTE" />
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+          <ScalarProperty Name="EXPEDIENTE" ColumnName="EXPEDIENTE" />
+          <ScalarProperty Name="IDENTIFICACION" ColumnName="IDENTIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK__mPaciente__ESTAT__267ABA7A" TypeName="Prg3ParcModel.FK__mPaciente__ESTAT__267ABA7A" StoreEntitySet="mPacientes">
+      <EndProperty Name="mEstatusPaciente">
+        <ScalarProperty Name="IDESTATUS" ColumnName="ESTATUS" />
+      </EndProperty>
+      <EndProperty Name="mPacientes">
+        <ScalarProperty Name="IDPACIENTE" ColumnName="IDPACIENTE" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="ESTATUS" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

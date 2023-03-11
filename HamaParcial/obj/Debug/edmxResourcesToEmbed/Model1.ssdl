@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Prg3ParcModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+  <EntityType Name="mEstatusPaciente">
+    <Key>
+      <PropertyRef Name="IDESTATUS" />
+    </Key>
+    <Property Name="IDESTATUS" Type="int" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="mPacientes">
+    <Key>
+      <PropertyRef Name="IDPACIENTE" />
+    </Key>
+    <Property Name="IDPACIENTE" Type="int" Nullable="false" />
+    <Property Name="NOMBRES" Type="nvarchar" MaxLength="50" />
+    <Property Name="APELLIDOS" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXPEDIENTE" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="IDENTIFICACION" Type="nvarchar" MaxLength="11" />
+    <Property Name="ESTATUS" Type="int" />
+  </EntityType>
+  <Association Name="FK__mPaciente__ESTAT__267ABA7A">
+    <End Role="mEstatusPaciente" Type="Self.mEstatusPaciente" Multiplicity="0..1" />
+    <End Role="mPacientes" Type="Self.mPacientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mEstatusPaciente">
+        <PropertyRef Name="IDESTATUS" />
+      </Principal>
+      <Dependent Role="mPacientes">
+        <PropertyRef Name="ESTATUS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Prg3ParcModelStoreContainer">
+    <EntitySet Name="mEstatusPaciente" EntityType="Self.mEstatusPaciente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mPacientes" EntityType="Self.mPacientes" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__mPaciente__ESTAT__267ABA7A" Association="Self.FK__mPaciente__ESTAT__267ABA7A">
+      <End Role="mEstatusPaciente" EntitySet="mEstatusPaciente" />
+      <End Role="mPacientes" EntitySet="mPacientes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

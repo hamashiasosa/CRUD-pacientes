@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Prg3ParcModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+  <EntityType Name="mEstatusPaciente">
+    <Key>
+      <PropertyRef Name="IDESTATUS" />
+    </Key>
+    <Property Name="IDESTATUS" Type="Int32" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="mPacientes" Relationship="Self.FK__mPaciente__ESTAT__267ABA7A" FromRole="mEstatusPaciente" ToRole="mPacientes" />
+  </EntityType>
+  <EntityType Name="mPaciente">
+    <Key>
+      <PropertyRef Name="IDPACIENTE" />
+    </Key>
+    <Property Name="IDPACIENTE" Type="Int32" Nullable="false" />
+    <Property Name="NOMBRES" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="APELLIDOS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EXPEDIENTE" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IDENTIFICACION" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="mEstatusPaciente" Relationship="Self.FK__mPaciente__ESTAT__267ABA7A" FromRole="mPacientes" ToRole="mEstatusPaciente" />
+  </EntityType>
+  <Association Name="FK__mPaciente__ESTAT__267ABA7A">
+    <End Role="mEstatusPaciente" Type="Self.mEstatusPaciente" Multiplicity="0..1" />
+    <End Role="mPacientes" Type="Self.mPaciente" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="DBhamaPrg">
+    <EntitySet Name="mEstatusPacientes" EntityType="Self.mEstatusPaciente" />
+    <EntitySet Name="mPacientes" EntityType="Self.mPaciente" />
+    <AssociationSet Name="FK__mPaciente__ESTAT__267ABA7A" Association="Self.FK__mPaciente__ESTAT__267ABA7A">
+      <End Role="mEstatusPaciente" EntitySet="mEstatusPacientes" />
+      <End Role="mPacientes" EntitySet="mPacientes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
